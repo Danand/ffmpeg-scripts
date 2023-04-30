@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Speed Frames Entrypoint",
+      "type": "python",
+      "request": "launch",
+      "module": "speed_frames",
+      "args": [
+        "--initial-rate",
+        "18",
+        "--final-rate",
+        "3",
+        "/home/user/Downloads/PXL_20230424_105414224.mp4",
+        "/home/user/Downloads/PXL_20230424_105414224.mp4",
+        "/home/user/Downloads/PXL_20230424_105513570.mp4",
+        "/home/user/Downloads/PXL_20230424_110021146.mp4",
+        "/home/user/Downloads/PXL_20230424_110315201.mp4",
+        "/home/user/Downloads/PXL_20230424_111324565.mp4"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

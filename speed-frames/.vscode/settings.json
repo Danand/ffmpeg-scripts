@@ -1,0 +1,16 @@
+{
+  "cSpell.words": [
+    "argparser",
+    "lerp",
+    "libx",
+    "mkdirs",
+    "natsort",
+    "pyffmpeg",
+    "ffprobe"
+  ],
+  "editor.tabSize": 4,
+  "python.linting.ignorePatterns": [
+    "**/site-packages/**/*.py"
+  ],
+  "python.analysis.typeCheckingMode": "basic"
+}
