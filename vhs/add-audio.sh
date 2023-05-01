@@ -5,19 +5,22 @@
 
 set -e
 
-source ./utils.sh
+source "./utils.sh"
 
-input="$(cat)"
+input_path="$(cat)"
+input_name="$(echo "${input_path}" | basename "$(cat)" | strip_extension "$(cat)")"
+
 audio_path="$1"
-filename="$(basename "${input}")"
-output="./outputs/$(strip_extension "${filename}")-with-audio.mp4"
+audio_name="$(echo "${audio_path}" | basename "$(cat)" | strip_extension "$(cat)")"
+
+output_path="./outputs/${input_name}-${audio_name}.mp4"
 
 ffmpeg \
-  -i "${input}" \
+  -i "${input_path}" \
   -i "${audio_path}" \
-  -c copy \
-  -map 0:v:0 \
-  -map 1:a:0 \
-  "${output}"
+  -c "copy" \
+  -map "0:v:0" \
+  -map "1:a:0 "\
+  "${output_path}"
 
-echo "${output}"
+echo "${output_path}"
