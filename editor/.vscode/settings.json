@@ -1,0 +1,14 @@
+{
+  "cSpell.words": [
+    "ffplay",
+    "pynput"
+  ],
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.include": [
+    "${workspaceFolder}/.venv/lib/python3.11/site-packages"
+  ],
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/.venv/lib/python3.11/site-packages"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+}
