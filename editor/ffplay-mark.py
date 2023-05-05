@@ -6,24 +6,51 @@ import io
 import sys
 import subprocess
 import time
+import json
+
+from typing import Dict, List
 
 from pynput import keyboard
 
-cwd = os.path.dirname(os.path.realpath(sys.argv[0]))
-file_path = sys.argv[1]
+Markers = Dict[str, List[int]]
+
+cwd: str = os.path.dirname(os.path.realpath(sys.argv[0]))
+file_path: str = sys.argv[1]
+markers_path: str = sys.argv[2]
 
 current_frame = 0
 
-markers = []
+def load_markers(path: str) -> Markers:
+    if not os.path.exists(path):
+        return {}
 
-def add_marker():
-    print(f'Add marker at frame {current_frame}')
-    markers.append(current_frame)
+    with io.open(path, 'r') as file:
+        text = file.read()
+
+        if len(text) == 0:
+            return {}
+
+        obj = json.loads(text)
+
+        return obj
+
+def save_markers(path: str, obj: Markers) -> None:
+    with io.open(path, 'w+') as file:
+        text = json.dumps(obj)
+        file.write(text)
+
+markers: Markers = load_markers(markers_path)
 
 process = subprocess.Popen(
     args=['/bin/bash', './ffplay-seek.sh', file_path],
     stdout=subprocess.PIPE,
     cwd=cwd)
+
+def add_marker() -> None:
+    print(f'Add marker at frame {current_frame}')
+    markers_list = markers.pop(file_path, [])
+    markers_list.append(current_frame)
+    markers[file_path] = markers_list
 
 listener = keyboard.GlobalHotKeys({
     '<ctrl>+m': add_marker
@@ -31,7 +58,7 @@ listener = keyboard.GlobalHotKeys({
 
 listener.start()
 
-FRAME_NUMBER_PATH = env.get("FRAME_NUMBER_PATH")
+FRAME_NUMBER_PATH: str = env.get("FRAME_NUMBER_PATH")
 
 while not os.path.exists(FRAME_NUMBER_PATH):
     time.sleep(1)
@@ -56,4 +83,4 @@ with io.open(FRAME_NUMBER_PATH, 'r') as file:
 
 os.remove(FRAME_NUMBER_PATH)
 
-print(markers)
+save_markers(markers_path, markers)
