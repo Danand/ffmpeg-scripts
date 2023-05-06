@@ -5,7 +5,9 @@
 
 set -e
 
-source ./utils.sh
+SRC_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+
+source "${SRC_DIR}/utils.sh"
 
 input_path="$(cat)"
 input_name="$(echo "${input_path}" | basename "$(cat)" | strip_extension "$(cat)")"
