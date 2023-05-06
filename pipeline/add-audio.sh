@@ -17,6 +17,8 @@ audio_name="$(echo "${audio_path}" | basename "$(cat)" | strip_extension "$(cat)
 
 output_path="./outputs/${input_name}-${audio_name}.mp4"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -i "${audio_path}" \

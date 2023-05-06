@@ -21,6 +21,8 @@ output_path="./outputs/${input_name}-overlayed-${overlay_name}.mp4"
 
 filter_complex="overlay=enable='between(t,${overlay_timecode_seconds},${overlay_timecode_seconds}+1)':x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -i "${overlay_path}" \

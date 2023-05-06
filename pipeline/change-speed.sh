@@ -17,6 +17,8 @@ pts_multiplier=$(bc -l <<< "scale=2; 1/${speed}")
 
 output_path="./outputs/${input_name}-x${speed}.mp4"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -filter:v "setpts=${pts_multiplier}*PTS" \

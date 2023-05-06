@@ -25,6 +25,8 @@ video_filter="\
       PrimaryColour=&H03fcff, \
       Italic=1'"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -vf "${video_filter}" \

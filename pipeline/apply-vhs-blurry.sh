@@ -14,6 +14,8 @@ input_name="$(echo "${input_path}" | basename "$(cat)" | strip_extension "$(cat)
 
 output_path="./outputs/${input_name}-vhs-blurry.mp4"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -vf "\

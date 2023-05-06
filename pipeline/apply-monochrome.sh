@@ -16,6 +16,8 @@ output_path="./outputs/${input_name}-monochrome.mp4"
 
 video_filter="colorchannelmixer=rr=0.3:gg=0.11:bb=0.11"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -vf "${video_filter}" \

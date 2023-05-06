@@ -25,6 +25,8 @@ fi
 
 video_filter="subtitles=${subtitles_path}"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -vf "${video_filter}" \

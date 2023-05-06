@@ -17,6 +17,8 @@ frame_to="$2"
 
 output_path="./outputs/${input_name}-${frame_from}-${frame_to}.mp4"
 
+rm -f "${output_path}"
+
 ffmpeg \
   -i "${input_path}" \
   -filter:v "trim=start_frame=${frame_from}:end_frame=${frame_to},setpts=PTS-STARTPTS" \
