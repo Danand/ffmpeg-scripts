@@ -5,7 +5,7 @@
 
 set -e
 
-source "../pipeline/utils.sh"
+source "../utils.sh"
 
 input_path="$(cat)"
 input_name="$(echo "${input_path}" | basename "$(cat)" | strip_extension "$(cat)")"
