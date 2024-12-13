@@ -2,6 +2,21 @@
 #
 # Extracts `.gif` from video.
 
+if [ "$1" = "--help" ]; then
+  echo "Extracts a \`.gif\` from the specified video file using \`ffmpeg\`."
+  echo
+  echo "Usage:"
+  echo "  extract-gif.sh <input_file_path> <timecode_from> <duration>"
+  echo
+  echo "Arguments:"
+  echo "  <input_file_path>    Path to the input video file."
+  echo "  <timecode_from>      Start time in the video (format: HH:MM:SS)."
+  echo "  <duration>           Duration of the GIF (in seconds)."
+  echo
+
+  exit 0
+fi
+
 input_file_path="$1"
 timecode_from="$2"
 duration="$3"
